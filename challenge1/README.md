@@ -6,6 +6,8 @@ Este repositório contém a solução para um desafio proposto pela Alura, onde 
 
 - **React.js**: Biblioteca JavaScript para construção de interfaces de usuário.
 - **Vite**: Ferramenta de build que fornece um ambiente de desenvolvimento rápido e leve.
+- **Styled Components**: É uma biblioteca de CSS-in-JS que permite estilizar componentes em React utilizando a sintaxe do JavaScript. Com o Styled Components, você pode criar componentes estilizados que têm seus estilos encapsulados, tornando a manutenção e a legibilidade do código mais fáceis. A biblioteca também suporta temas, animações e permite a utilização de props para aplicar estilos dinâmicos.
+- **Antd**: É uma biblioteca de componentes UI para React que oferece um conjunto abrangente de componentes prontos para uso, seguindo as diretrizes do design do Ant Design. A biblioteca é ideal para a construção de interfaces de usuário em aplicações empresariais, pois oferece uma ampla variedade de componentes, como botões, formulários, tabelas e muito mais, todos projetados para serem esteticamente agradáveis e funcionalmente robustos.
 
 ## Início Rápido
 
