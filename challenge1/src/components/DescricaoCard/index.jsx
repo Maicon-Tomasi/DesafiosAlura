@@ -11,14 +11,31 @@ const DivDescricaoCard = styled.div`
      background-color: #00000029;
      color: white;
      font-weight: 400;
+
+     h2{
+          max-width: 500px;
+          white-space: normal;
+          overflow-wrap: break-word;
+     }
+
+     p{
+          max-width: 300px;
+          white-space: normal;
+          overflow-wrap: break-word;
+     }
+
+     @media screen and (max-width: 500px){
+          max-width: 300px;
+     }
+
 `
 
 const DescricaoCard = ({titulo, descricao}) => {
 
      return(
           <DivDescricaoCard>
-               <h2 style={{maxWidth: '500px', whiteSpace: 'normal', overflowWrap: 'break-word'}}>{titulo}</h2>
-               <p style={{maxWidth: '300px', whiteSpace: 'normal', overflowWrap: 'break-word'}}>{descricao}</p>
+               <h2>{titulo}</h2>
+               <p>{descricao}</p>
 
                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '5px'}}>

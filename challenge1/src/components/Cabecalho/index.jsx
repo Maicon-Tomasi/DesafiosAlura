@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import Logo from './logoAlura.png';
 import AvatarComponent from '../Avatar';
+import { Link } from 'react-router-dom';
 import { BarsOutlined } from '@ant-design/icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { CriarCardComunidadeContext } from '../../context/CriaCardComunidadeContext';
+
 
 const HeaderEstilizado = styled.header`
   display: flex;
@@ -53,11 +56,54 @@ const IconeMenu = styled(BarsOutlined)`
   font-size: 28px;
   color: white;
   margin-left: 20px;  /* Espaçamento para evitar colidir com a barra de pesquisa */
-
+  position: relative;
+  z-index: 1;
 `;
+
+const DivMenuMobile = styled.div`
+  width: 100%;
+  position: absolute;
+  left: -17px;
+  top: 100px;
+  background-color: #051D3B;
+  z-index: 2;
+
+  ul{
+    text-align: center;
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: 15px; /* Espaçamento entre as opções */
+  }
+
+  a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+    width: 100%;
+  }
+
+    `
 
 const Cabecalho = () => {
   const [largura, setLargura] = useState(window.innerWidth);
+  const [menu, setMenu] = useState(false)
+  const [busca, setBusca] = useState('')
+
+  const {buscaPost} = useContext(CriarCardComunidadeContext)
+
+  const abreFechaMenu = () => {
+    setMenu(!menu);
+  }
+
+  const changeSearch = (e) =>{
+    const valor = e.target.value;
+    setBusca(valor);
+    buscaPost(valor)
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,13 +122,24 @@ const Cabecalho = () => {
       <ImgEstilizada src={Logo} />
 
       <DivInputPesquisa>
-        <SearchEstilizado type='text' placeholder='Busque por algo' />
+        <SearchEstilizado value={busca} onChange={changeSearch} type='text' placeholder='Busque por algo' />
       </DivInputPesquisa>
       
       {largura <= 1300 ?  
-        <IconeMenu /> : 
+        <IconeMenu onClick={abreFechaMenu}/> : 
         <AvatarComponent /> 
       }
+
+      {menu ? 
+        <DivMenuMobile>
+            <nav>
+              <ul>
+                <li><Link to='/'>Editor De Código</Link></li>
+                <li><Link to='/comunidade'>Comunidade</Link></li>
+              </ul>
+            </nav>
+        </DivMenuMobile>
+      : ''}
     </HeaderEstilizado>
   );
 };

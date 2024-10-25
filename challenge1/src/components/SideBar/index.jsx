@@ -37,7 +37,7 @@ const IconDiv = styled.div`
 `;
 
 const SideBar = () => {
-  const [activeOption, setActiveOption] = useState('');
+  const [activeOption, setActiveOption] = useState('/');
   const [largura, setLargura] = useState(window.innerWidth);
 
   const handleClick = (option) => {

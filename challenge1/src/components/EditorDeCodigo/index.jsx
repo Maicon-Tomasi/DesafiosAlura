@@ -19,7 +19,7 @@ const ContainerEditor = styled.div`
   }
 
   @media screen and (max-width: 500px){
-    width: ${(props) => (props.$comunidade ? '520px' : '343px')};  /* Usa booleano */
+    width: ${(props) => (props.$comunidade ? '300px' : '343px')};  /* Usa booleano */
   }
 
 

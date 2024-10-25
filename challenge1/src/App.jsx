@@ -28,20 +28,20 @@ function App() {
 
     <BrowserRouter>
       <EstilosGlobais />
-        <Cabecalho />
-        <Layout>
-          <SideBar />
-            <Content>
-              <TrocaCorProvider>
-                <CriarCardComunidadeProvider>
+      <TrocaCorProvider>
+        <CriarCardComunidadeProvider>
+          <Cabecalho />
+          <Layout>
+            <SideBar />
+              <Content>
                   <Routes>
                     <Route path='/' element={<Editor />}/>
                     <Route path='/comunidade' element={<Comunidade />}/>
                   </Routes>
-                </CriarCardComunidadeProvider>
-              </TrocaCorProvider>
-            </Content>
-        </Layout>
+              </Content>
+          </Layout>
+          </CriarCardComunidadeProvider>
+          </TrocaCorProvider>
     </BrowserRouter>
 
   )

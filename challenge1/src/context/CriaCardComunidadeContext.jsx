@@ -12,7 +12,7 @@ export function CriarCardComunidadeProvider({children}){
      const [linguagem, setLinguagem] = useState('');
      const [codigo, setCodigo] = useState('');
 
-     const [posts, setPosts] = useState([
+     const [allPosts, setAllPosts] = useState([
           {
                tituloProjeto: "Projeto de teste 1",
                descricaoProjeto: "descricao",
@@ -29,6 +29,8 @@ export function CriarCardComunidadeProvider({children}){
           }
      ]);
      
+     const [posts, setPosts] = useState(allPosts);
+
      function postarCodigo(){
 
           const novosPosts =  {
@@ -40,7 +42,17 @@ export function CriarCardComunidadeProvider({children}){
                }
           
 
-          setPosts((prevPosts) => [...prevPosts, novosPosts]);
+               setAllPosts((prevAllPosts) => [...prevAllPosts, novosPosts]);
+               setPosts((prevPosts) => [...prevPosts, novosPosts]);
+     }
+
+     function buscaPost(titulo) {
+          // If search is empty, reset posts to allPosts
+          if (titulo === '') {
+               setPosts(allPosts);
+          } else {
+               setPosts(allPosts.filter((post) => post.tituloProjeto.includes(titulo)));
+          }
      }
 
      useEffect(()=>{
@@ -48,7 +60,7 @@ export function CriarCardComunidadeProvider({children}){
      },[posts])
 
      return (
-          <CriarCardComunidadeContext.Provider value={{ posts, setTitulo, setDescricao, setLinguagem, setCodigo, postarCodigo }}>
+          <CriarCardComunidadeContext.Provider value={{ posts, setTitulo, setDescricao, setLinguagem, setCodigo, postarCodigo, buscaPost }}>
             {children}
           </CriarCardComunidadeContext.Provider>
         );
