@@ -1,0 +1,7 @@
+:root{
+     --fonte: 'Inter';
+}
+
+html,body{
+     font-family: var(--fonte);
+}
